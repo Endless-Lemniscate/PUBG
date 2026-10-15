@@ -43,17 +43,17 @@ async function main() {
     sidebar.prepend(watchPanel);
     watchPanel.after(controls);
     engine.onCreatureDeath = (c) => {
-      if (c.brain.name === 'AstraBot') lastDeath = `Последняя гибель: ${Math.floor(gameTicks / 3600)}:${String(Math.floor(gameTicks / 60) % 60).padStart(2, '0')}`;
+      if (c.brain.name === 'Astra') lastDeath = `Последняя гибель: ${Math.floor(gameTicks / 3600)}:${String(Math.floor(gameTicks / 60) % 60).padStart(2, '0')}`;
     };
   }
   function updateWatch() {
     if (!watchAstra) return;
-    const brain = engine.getBrains().find((b) => b.name === 'AstraBot')!;
+    const brain = engine.getBrains().find((b) => b.name === 'Astra')!;
     const creature = engine.getCreatures().find((c) => c.brain === brain);
     const place = 1 + engine.getBrains().filter((b) => b.iq > brain.iq).length;
     const clock = `${Math.floor(gameTicks / 3600)}:${String(Math.floor(gameTicks / 60) % 60).padStart(2, '0')}`;
     const status = creature ? `На поле · уровень ${creature.level} · HP ${Math.ceil(creature.lives)}` : 'Ждёт своей очереди на выход';
-    watchPanel.innerHTML = `<h2>AstraBot <small>(lemniscate)</small></h2>
+    watchPanel.innerHTML = `<h2>Astra <small>(ChatGPT)</small></h2>
       <p class="astra-state">${ui.isPaused() ? 'Пауза' : status}</p>
       <div class="astra-stats"><strong>IQ ${brain.iq}</strong><span>Место ${place}/${allBrains.length}</span></div>
       <p>Убийства: ${brain.kills} · Смерти: ${brain.deaths}</p>
