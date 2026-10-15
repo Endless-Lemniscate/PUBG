@@ -282,8 +282,8 @@ IQ — основная метрика успешности бота. Храни
 
 ## Боты (14 штук)
 
-### AstraBot — Sprayer, Вампир
-**Автор:** lemniscate
+### Astra — Sprayer, Вампир
+**Автор:** ChatGPT
 
 Создан с ChatGPT. Рассчитывает упреждение с учётом замедления пули и движения цели, компенсирует инерцию поворота. Прогнозирует траектории входящих пуль, обходит препятствия и опасные звёзды. Выбирает цели для добивания, конкурирует за боеприпасы, подбирает полезные звёзды и использует вампиризм после первого повышения уровня. Состояние стратегии сбрасывается при возрождении; бот использует только публичный API.
 
@@ -384,7 +384,7 @@ pubg/
 │   │
 │   ├── brains/                  # Боты (14 штук)
 │   │   ├── index.ts             # Реестр всех ботов
-│   │   ├── astra.ts             # AstraBot — Sprayer, predictive combat and vampire sustain
+│   │   ├── astra.ts             # Astra — Sprayer, predictive combat and vampire sustain
 │   │   ├── opus.ts              # CC Opus — Splitpus, wide stalker
 │   │   ├── reptile.ts           # Reptile — Runchip, ядовитые пули
 │   │   ├── niloultet.ts         # nil-oultet — Sprayer, вампир
