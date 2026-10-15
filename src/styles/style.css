@@ -146,3 +146,14 @@ body {
     border-top: 1px solid #1a1a3e;
   }
 }
+
+.astra-watch #server-leaderboard { display: none; }
+.astra-watch #sidebar { width: 340px; }
+.astra-panel { border: 1px solid #31756e; border-radius: 8px; padding: 14px; background: #122c38; }
+.astra-panel h2 { color: #bafff7; font-size: 18px; margin-bottom: 10px; }
+.astra-panel small { font-size: 12px; font-weight: normal; }
+.astra-panel p { font-size: 13px; line-height: 1.5; margin: 7px 0; }
+.astra-stats { display: flex; justify-content: space-between; align-items: center; }
+.astra-stats strong { font-size: 25px; color: #82fff0; }
+.astra-note { color: #9ab6c1; font-size: 11px !important; }
+@media (max-width: 900px) { .astra-watch #sidebar { width: 100%; height: 280px; } .astra-panel { min-width: 280px; } }

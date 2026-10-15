@@ -53,6 +53,7 @@ export class Renderer {
   private groundImage: HTMLImageElement | null = null;
   private spriteCache: Map<string, HTMLImageElement> = new Map();
   private config: GameConfig;
+  private highlightAstra = new URLSearchParams(location.search).get('watch') === 'astra';
 
   constructor(container: HTMLElement, config: GameConfig) {
     this.config = config;
@@ -162,6 +163,17 @@ export class Renderer {
     for (const creature of snapshot.creatures) {
       this.drawIndicators(ctx, creature);
       this.drawMessage(ctx, creature);
+      if (this.highlightAstra && creature.brain.name === 'AstraBot') {
+        const p = creature.body.position;
+        ctx.save();
+        ctx.strokeStyle = '#82fff0'; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.arc(p.x, p.y, 39, 0, Math.PI * 2); ctx.stroke();
+        ctx.font = 'bold 14px sans-serif'; ctx.textAlign = 'center';
+        ctx.lineWidth = 4; ctx.strokeStyle = '#102635'; ctx.fillStyle = '#bafff7';
+        ctx.strokeText('AstraBot', p.x, p.y + 57);
+        ctx.fillText('AstraBot', p.x, p.y + 57);
+        ctx.restore();
+      }
     }
 
     ctx.restore();

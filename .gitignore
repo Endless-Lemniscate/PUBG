@@ -37,3 +37,6 @@ src/full-stats-diag.ts
 
 # Deployment credentials
 .deploy.md
+
+# Local Vite dependency cache
+.vite-cache/

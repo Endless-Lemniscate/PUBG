@@ -6,7 +6,7 @@
  *   - **Creatures +/-** -- adjust the number of simultaneously alive creatures
  *     on the arena (clamped to 3-8 by the engine).
  *   - **Pause / Resume** -- freeze the game loop.
- *   - **Speed** -- cycle through 1x / 2x / 4x simulation speed.
+ *   - **Speed** -- cycle through 1x / 2x / 4x / 10x / 20x simulation speed.
  *   - **Restart** -- reload the page to start a fresh session.
  *
  * The UI is rendered as plain HTML inside the provided container element.
@@ -24,6 +24,7 @@ export class UI {
   private container: HTMLElement;
   private paused = false;
   private speedMultiplier = 1;
+  private readonly speeds = [1, 2, 4, 10, 20];
 
   // Cached DOM references for fast updates
   private countEl: HTMLElement | null = null;
@@ -82,7 +83,7 @@ export class UI {
     });
 
     this.container.querySelector('#btn-speed')?.addEventListener('click', () => {
-      this.speedMultiplier = this.speedMultiplier >= 4 ? 1 : this.speedMultiplier * 2;
+      this.speedMultiplier = this.speeds[(this.speeds.indexOf(this.speedMultiplier) + 1) % this.speeds.length];
       if (this.speedBtn) {
         this.speedBtn.textContent = `${this.speedMultiplier}x`;
       }
@@ -103,8 +104,8 @@ export class UI {
   }
 
   /**
-   * Current speed multiplier (1, 2, or 4).
-   * The game loop should call `engine.tick()` this many times per frame.
+   * Current speed multiplier (1, 2, 4, 10, or 20).
+   * Scales elapsed simulation time; rendering remains independent.
    */
   getSpeedMultiplier(): number {
     return this.speedMultiplier;

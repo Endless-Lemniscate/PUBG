@@ -4,6 +4,7 @@ import { resolve } from 'path';
 export default defineConfig({
   base: '/projects/pubg/arena/',
   root: '.',
+  cacheDir: '.vite-cache',
   publicDir: 'public',
   build: {
     outDir: 'dist',
