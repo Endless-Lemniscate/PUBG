@@ -146,10 +146,12 @@ const astra: Brain = {
           const decay = bulletDecay[f];
           if (b.speed * decay < 5) continue;
           const travel = bulletTravel[f];
-          const distance = Math.hypot(
-            px - b.position.x - b.velocity.x * travel,
-            py - b.position.y - b.velocity.y * travel,
-          );
+          const dx = px - b.position.x - b.velocity.x * travel;
+          const dy = py - b.position.y - b.velocity.y * travel;
+          // Outside this box a bullet cannot enter the 44px danger circle.
+          // Skip the expensive distance calculation without changing the score.
+          if (Math.abs(dx) >= 44 || Math.abs(dy) >= 44) continue;
+          const distance = Math.hypot(dx, dy);
           if (distance < 44) loss += (44 - distance) * (f <= 11 ? 1 : 0.35);
         }
       }
