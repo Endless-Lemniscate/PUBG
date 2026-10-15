@@ -1,7 +1,7 @@
 import type { Brain, Action, CreatureView, BulletView, GameObjectView, Point } from '../types';
 import { ActionType as Act, Kind, ObjectType, StarShape } from '../types';
 
-// AstraBot (lemniscate). Only the public, observed game state is used.
+// Astra (ChatGPT). Only the public, observed game state is used.
 const g = globalThis as any;
 // Tuned against separate seeded training arenas; validation uses unseen seeds.
 const tuning = {
@@ -83,8 +83,8 @@ function turn(self: CreatureView, direction: number): Action {
 }
 
 const astra: Brain = {
-  name: 'AstraBot',
-  author: 'lemniscate',
+  name: 'Astra',
+  author: 'ChatGPT',
   kind: Kind.sprayer,
   description:
     'Predictive aiming and evasion, resource control, opportunistic attacks, and vampire sustain.',
